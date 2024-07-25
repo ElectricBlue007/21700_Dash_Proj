@@ -9,6 +9,7 @@ app = dash.Dash(
     use_pages=True,
     suppress_callback_exceptions=True,
     external_stylesheets=[dbc.themes.MATERIA, dbc.icons.FONT_AWESOME],
+    assets_folder='assets'
 )
 
 # Define the layout with dynamic margins

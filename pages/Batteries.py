@@ -9,14 +9,20 @@ app = dash.Dash(__name__)
 
 battery_html_template = '''
 <section class="battery">
-    <div class="battery__card glass" style="width: 130px; height: 150px; border: 1px solid rgba(82, 63, 233, 0.60); position: relative;">
+    <b><div class="battery__card glass" style="width: 130px; height: 150px; border: 1px solid rgba(82, 63, 233, 0.60); position: relative;">
         <div class="battery__data">
-            <h1 class="battery__percentage" style="font-size: 20px; margin-bottom: 5px; line-height: 1;">{percentage}%</h1>
-            <p class="battery__status" style="font-size: 15px; margin-bottom: 3px; line-height: 1;">{status}</p>
-            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px; line-height: 1;">V: {V}</p>
-            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px; line-height: 1;">I: {I}</p>
-            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px; line-height: 1;">C: {C}</p>
-            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px; line-height: 1;">T: {T}</p>
+            <h1 class="battery__percentage" style="font-size: 20px; margin-bottom: 5px;
+              line-height: 1;">{percentage}%</h1>
+            <p class="battery__status" style="font-size: 15px; margin-bottom: 3px;
+             line-height: 1;">{status}</p>
+            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px;
+                                      line-height: 1;">V: {V}</p>
+            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px;
+                                                line-height: 1;">I: {I}</p>
+            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px;
+                                                line-height: 1;">C: {C}</p>
+            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px;
+                                                line-height: 1;">T: {T}</p></b>
         </div>
         <div class="battery__pill">
             <div class="battery__level">
