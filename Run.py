@@ -3,9 +3,7 @@ import dash_bootstrap_components as dbc
 from dash import html, page_container
 from callbacks.callbacks import register_callbacks
 from layouts.sidebar import sidebar
-from layouts.navbar import navbar
 
-# Initialize the Dash app
 app = dash.Dash(
     __name__,
     use_pages=True,
@@ -13,20 +11,20 @@ app = dash.Dash(
     external_stylesheets=[dbc.themes.MATERIA, dbc.icons.FONT_AWESOME],
 )
 
-# Define the layout of the app
+# Define the layout with dynamic margins
 app.layout = html.Div(
     [
-        sidebar,  # Sidebar layout
-        navbar,  # Navbar layout
+        sidebar,
         html.Div(
             [
                 page_container
             ],
+            id='page-content',
             className="content",
             style={
-                'marginLeft': '228px',
-                'marginTop': '70px',
-                'padding': '20px'
+                # 'marginLeft': '200px',
+                # 'marginTop': '70px',
+                # 'padding': '20px'
             }
         ),
     ]

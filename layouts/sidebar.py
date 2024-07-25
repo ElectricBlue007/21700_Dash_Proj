@@ -5,7 +5,7 @@ sidebar = html.Div(
     [
         html.Div(
             [
-                html.H2("Menu", style={"color": "white"}),
+                html.H2("Menu", style={"color": "#0374da"}),
             ],
             className="sidebar-header",
         ),
@@ -56,7 +56,7 @@ sidebar = html.Div(
                         pills=True,
                     ),
                     id="charges-collapse",
-                    is_open=False,
+                    is_open=False,  # Toggle this via callback
                 ),
                 dbc.NavLink(
                     [
@@ -104,7 +104,7 @@ sidebar = html.Div(
                         pills=True,
                     ),
                     id="actions-collapse",
-                    is_open=False,
+                    is_open=False,  # Toggle this via callback
                 ),
                 dbc.NavLink(
                     [
@@ -138,7 +138,7 @@ sidebar = html.Div(
                                     ),
                                     dbc.NavLink(
                                         [
-                                            html.I(className="fa-solid fa-file-export"),
+                                            html.I(className="fa fa-file-export"),
                                             html.Span(" Export Data Item"),
                                         ],
                                         href="/save-data/export-item",
@@ -146,7 +146,7 @@ sidebar = html.Div(
                                     ),
                                     dbc.NavLink(
                                         [
-                                            html.I(className="fa-duotone fa-solid fa-folder-open"),
+                                            html.I(className="fa fa-folder-open"),
                                             html.Span(" Open"),
                                         ],
                                         href="/save-data/open",
@@ -160,7 +160,55 @@ sidebar = html.Div(
                         pills=True,
                     ),
                     id="save-data-collapse",
-                    is_open=False,
+                    is_open=False,  # Toggle this via callback
+                ),
+                dbc.NavLink(
+                    [
+                        html.I(className="fa fa-cogs"),
+                        html.Span(" Operation"),
+                    ],
+                    href="#",
+                    id="operation-toggle",
+                    active="exact",
+                ),
+                dbc.Collapse(
+                    dbc.Nav(
+                        [
+                            html.Div(
+                                [
+                                    dbc.NavLink(
+                                        [
+                                            html.I(className="fa fa-tachometer"),
+                                            html.Span(" Capacity Grading"),
+                                        ],
+                                        href="/operation/cap-gr",
+                                        active="exact"
+                                    ),
+                                    dbc.NavLink(
+                                        [
+                                            html.I(className="fa fa-calendar"),
+                                            html.Span(" Schedule Tasks"),
+                                        ],
+                                        href="/operation/sch-tasks",
+                                        active="exact"
+                                    ),
+                                    dbc.NavLink(
+                                        [
+                                            html.I(className="fa fa-cogs"),
+                                            html.Span(" Process Step Management"),
+                                        ],
+                                        href="/operation/p-s-management",
+                                        active="exact"
+                                    ),
+                                ],
+                                style={"paddingLeft": "20px"}  # Add indentation
+                            )
+                        ],
+                        vertical=True,
+                        pills=True,
+                    ),
+                    id="operation-collapse",
+                    is_open=False,  # Toggle this via callback
                 ),
                 dbc.NavLink(
                     [
@@ -190,8 +238,8 @@ sidebar = html.Div(
         'bottom': 0,
         'width': '205px',
         'padding': '20px',
-        'backgroundColor': '#06131c',
+        'background': 'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(3,2,74,1) 56%, rgba(0,0,0,1) 100%)',
         'borderRadius': '10px',
-        'zIndex': 1
+        'zIndex': 2
     }
 )

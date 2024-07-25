@@ -5,7 +5,6 @@ import plotly.graph_objs as go
 
 app = Dash(__name__)
 
-
 data = {
     "Current": [0.5, 1.0, 1.5, 2.0],
     "Voltage": [3.7, 3.8, 3.9, 4.0],
@@ -36,7 +35,13 @@ fig.update_layout(
     yaxis=dict(gridcolor=dark_theme['graph_grid'])
 )
 
-tables_layout = html.Div(style={'backgroundColor': dark_theme['background'], 'color': dark_theme['text'], 'height': '100vh', 'padding': '20px'}, children=[
+tables_layout = html.Div(style={
+    'backgroundColor': dark_theme['background'],
+    'color': dark_theme['text'],
+    'height': '100vh',
+    'padding': '20px',
+    'marginLeft': '200px'  # Added left margin
+}, children=[
     dcc.Graph(
         id='example-graph',
         figure=fig,
@@ -64,7 +69,6 @@ tables_layout = html.Div(style={'backgroundColor': dark_theme['background'], 'co
 ])
 
 dash.register_page(__name__, path="/tables", layout=tables_layout)
-
 
 if __name__ == '__main__':
     app.run_server(debug=True)

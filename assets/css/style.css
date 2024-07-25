@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background: #222;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* Adjust the number of columns as needed */
+    gap: 20px;
+}
+.switch {
+    position: relative;
+}
+label {
+    width: 100px;
+    height: 100px;
+    background: #222;
+    border-radius: 50%;
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, .1),
+                5px 5px 10px rgba(0, 0, 0, .5);
+    line-height: 100px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input[type="checkbox"] {
+    display: none;
+}
+label .fas {
+    font-size: 2em;
+    color: #aaa;
+}
+input[type="checkbox"]:checked + label .fas {
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0;
+}
+input[type="checkbox"]:checked ~ label {
+    box-shadow: inset -5px -5px 10px rgba(255, 255, 255, .1),
+                inset 5px 5px 10px rgba(0, 0, 0, .5);
+}
