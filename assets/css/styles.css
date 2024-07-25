@@ -49,8 +49,6 @@ body {
 }
 
 .battery__card {
-    width: 100%;
-    height: 100%;
     max-width: 400px;
     background-color: hsl(0, 0%, 9%);
     border-radius: 1rem;
@@ -111,51 +109,4 @@ body {
     margin: 0 auto;
     top: -2px;
     border-radius: 50%;
-}
-
-/* Media queries for responsiveness */
-@media screen and (max-width: 1600px) {
-    .battery__card {
-        max-width: 350px;
-    }
-
-    .battery__percentage {
-        font-size: 1.3rem;
-    }
-
-    .battery__status {
-        font-size: 0.7rem;
-    }
-
-    .battery__pill {
-        width: 35px;
-        height: 90px;
-    }
-
-    .battery__liquid {
-        height: 20px;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .battery__card {
-        max-width: 300px;
-    }
-
-    .battery__percentage {
-        font-size: 1rem;
-    }
-
-    .battery__status {
-        font-size: 0.6rem;
-    }
-
-    .battery__pill {
-        width: 30px;
-        height: 80px;
-    }
-
-    .battery__liquid {
-        height: 16px;
-    }
 }
