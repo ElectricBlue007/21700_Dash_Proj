@@ -1,0 +1,161 @@
+/* Reset and basic styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: hsl(0, 0%, 11%);
+    color: #fff;
+}
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    --color-red: hsl(7, 89%, 46%);
+    --color-orange: hsl(22, 89%, 46%);
+    --color-yellow: hsl(54, 89%, 46%);
+    --color-green: hsl(92, 89%, 46%);
+}
+
+.gradient-color-red,
+.gradient-color-red::after {
+    background: linear-gradient(90deg, var(--color-red) 15%, hsl(11, 93%, 68%) 100%);
+}
+
+.gradient-color-orange,
+.gradient-color-orange::after {
+    background: linear-gradient(90deg, var(--color-orange) 15%, hsl(54, 90%, 45%) 100%);
+}
+
+.gradient-color-yellow,
+.gradient-color-yellow::after {
+    background: linear-gradient(90deg, var(--color-yellow) 15%, hsl(92, 90%, 45%) 100%);
+}
+
+.gradient-color-green,
+.gradient-color-green::after {
+    background: linear-gradient(90deg, var(--color-green) 15%, hsl(92, 90%, 68%) 100%);
+}
+
+/* Battery styles */
+.battery {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.battery__card {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    background-color: hsl(0, 0%, 9%);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.battery__data {
+    flex: 1;
+}
+
+.battery__percentage {
+    font-size: 1.5rem;
+}
+
+.battery__status {
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+.battery__pill {
+    width: 40px;
+    height: 100px;
+    background-color: hsl(0, 0%, 9%);
+    box-shadow: inset 10px 0 24px hsl(0, 0%, 16%), inset -2px 6px 24px hsl(0, 0%, 56%);
+    border-radius: 1.75rem;
+    margin-left: auto;
+    position: relative;
+}
+
+.battery__level {
+    position: absolute;
+    inset: 3px;
+    border-radius: 1.75rem;
+    overflow: hidden;
+}
+
+.battery__liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 24px;
+    background: var(--gradient-color-red);
+    box-shadow: inset -5px 0 6px hsla(0, 0%, 0%, .1), inset 6px 0 6px hsla(0, 0%, 0%, .15);
+    transition: .3s;
+}
+
+.battery__liquid::after {
+    content: '';
+    position: absolute;
+    height: 4px;
+    background: inherit;
+    box-shadow: inset 0px -1.5px 3px hsla(0, 0%, 0%, .2);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: -2px;
+    border-radius: 50%;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 1600px) {
+    .battery__card {
+        max-width: 350px;
+    }
+
+    .battery__percentage {
+        font-size: 1.3rem;
+    }
+
+    .battery__status {
+        font-size: 0.7rem;
+    }
+
+    .battery__pill {
+        width: 35px;
+        height: 90px;
+    }
+
+    .battery__liquid {
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .battery__card {
+        max-width: 300px;
+    }
+
+    .battery__percentage {
+        font-size: 1rem;
+    }
+
+    .battery__status {
+        font-size: 0.6rem;
+    }
+
+    .battery__pill {
+        width: 30px;
+        height: 80px;
+    }
+
+    .battery__liquid {
+        height: 16px;
+    }
+}
