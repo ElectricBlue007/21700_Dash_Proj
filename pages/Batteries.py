@@ -1,28 +1,27 @@
 import dash
+# give style to html in dash
 from dash import html, dcc
+# callbacks modules
 from dash.dependencies import Input, Output, State
+# connect html to dash
 from dash_dangerously_set_inner_html import DangerouslySetInnerHTML
 import serial
+# import navbar from directory layout
 from layouts.Navbar import navbar2
 
 app = dash.Dash(__name__)
 
+# HTML template for displaying battery information
 battery_html_template = '''
 <section class="battery">
     <b><div class="battery__card glass" style="width: 130px; height: 150px; border: 1px solid rgba(82, 63, 233, 0.60); position: relative;">
         <div class="battery__data">
-            <h1 class="battery__percentage" style="font-size: 20px; margin-bottom: 5px;
-              line-height: 1;">{percentage}%</h1>
-            <p class="battery__status" style="font-size: 15px; margin-bottom: 3px;
-             line-height: 1;">{status}</p>
-            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px;
-                                      line-height: 1;">V: {V}</p>
-            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px;
-                                                line-height: 1;">I: {I}</p>
-            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px;
-                                                line-height: 1;">C: {C}</p>
-            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px;
-                                                line-height: 1;">T: {T}</p></b>
+            <h1 class="battery__percentage" style="font-size: 20px; margin-bottom: 5px; line-height: 1;">{percentage}%</h1>
+            <p class="battery__status" style="font-size: 15px; margin-bottom: 3px; line-height: 1;">{status}</p>
+            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px; line-height: 1;">V: {V}</p>
+            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px; line-height: 1;">I: {I}</p>
+            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px; line-height: 1;">C: {C}</p>
+            <p class="battery__extra" style="font-size: 15px; margin-bottom: 3px; line-height: 1;">T: {T}</p></b>
         </div>
         <div class="battery__pill">
             <div class="battery__level">
@@ -34,13 +33,15 @@ battery_html_template = '''
 </section>
 '''
 
-# Initial battery data
-battery_data = [
-    {'percentage': 20, 'status': '', 'liquid_color': 'linear-gradient(90deg, hsl(7, 89%, 46%) 15%, hsl(11, 93%, 68%) 100%)',
-     'num': i + 1, 'V': 0, 'I': 0, 'C': 0, 'T': 0} for i in range(90)
+# Initial battery data for 90 batteries
+initial_battery_data = [
+    {
+        'percentage': 20, 'status': '', 'liquid_color': 'linear-gradient(90deg, hsl(7, 89%, 46%) 15%, hsl(11, 93%, 68%) 100%)',
+        'num': i + 1, 'V': 0, 'I': 0, 'C': 0, 'T': 0
+    } for i in range(90)
 ]
 
-
+# battery status and color based on percentage
 def get_battery_status_and_color(percentage):
     if percentage <= 20:
         return "", 'linear-gradient(90deg, hsl(7, 89%, 46%) 15%, hsl(11, 93%, 68%) 100%)'
@@ -51,42 +52,51 @@ def get_battery_status_and_color(percentage):
     else:
         return "", 'linear-gradient(90deg, hsl(92, 89%, 46%) 15%, hsl(92, 90%, 68%) 100%)'
 
-
-layout = html.Div(id='page-content', className="content", style={
-    'marginLeft': '200px',
-    'marginTop': '-20px',
-    'padding': '20px',
-    'background': 'linear-gradient(356deg, rgba(0,0,0,1) 0%, rgba(6,1,61,1) 57%, rgba(0,0,0,1) 100%), rgb(0,0,0)'
-},
+# Layout for the Dash app
+layout = html.Div(
+    id='page-content',
+    className="content",
+    style={
+        'marginLeft': '200px',
+        'marginTop': '-20px',
+        'padding': '20px',
+        'background': 'linear-gradient(356deg, rgba(0,0,0,1) 0%, rgba(6,1,61,1) 57%, rgba(0,0,0,1) 100%), rgb(0,0,0)'
+    },
     children=[
-    navbar2,
-    html.Div(id='battery-components'),
-    dcc.Dropdown(
-        id='battery-selector',
-        options=[{'label': f'Battery {i}', 'value': i} for i in range(1, 91)],
-        placeholder='Select a battery to update',
-        style={'margin': '10px', 'backgroundColor': 'white', 'color': 'black'}
-    ),
-    dcc.Input(id='battery-input', type='number', min=0, max=100, step=1, value=20, style={'margin-right': '10px'}),
-    dcc.Input(id='V-input', type='number', placeholder='V', style={'margin-right': '10px'}),
-    dcc.Input(id='I-input', type='number', placeholder='I', style={'margin-right': '10px'}),
-    dcc.Input(id='C-input', type='number', placeholder='C', style={'margin-right': '10px'}),
-    dcc.Input(id='T-input', type='number', placeholder='T', style={'margin-right': '10px'}),
-    html.Button('Update Battery', id='update-button', n_clicks=0)
-])
-
-
-@dash.callback(
-    Output('battery-components', 'children'),
-    Input('update-button', 'n_clicks'),
-    [State('battery-selector', 'value'),
-     State('battery-input', 'value'),
-     State('V-input', 'value'),
-     State('I-input', 'value'),
-     State('C-input', 'value'),
-     State('T-input', 'value')]
+        navbar2,
+        dcc.Store(id='battery-store', data=initial_battery_data),
+        html.Div(id='battery-components'),
+        dcc.Dropdown(
+            id='battery-selector',
+            options=[{'label': f'Battery {i}', 'value': i} for i in range(1, 91)],
+            placeholder='Select a battery to update',
+            style={'margin': '10px', 'backgroundColor': 'white', 'color': 'black'}
+        ),
+        # test batteries change
+        dcc.Input(id='battery-input', type='number', min=0, max=100, step=1, value=20, style={'padding': '10px'}),
+        dcc.Input(id='V-input', type='number', placeholder='V', style={'margin-padding': '10px'}),
+        dcc.Input(id='I-input', type='number', placeholder='I', style={'margin-right': '10px'}),
+        dcc.Input(id='C-input', type='number', placeholder='C', style={'margin-right': '10px'}),
+        dcc.Input(id='T-input', type='number', placeholder='T', style={'margin-right': '10px'}),
+        html.Button('Update Battery', id='update-button', n_clicks=0)
+    ]
 )
-def update_battery_components(n_clicks, selected_battery, battery_percentage, V, I, C, T):
+
+# Callback to update battery data
+@dash.callback(
+    Output('battery-store', 'data'),
+    Input('update-button', 'n_clicks'),
+    [
+        State('battery-store', 'data'),
+        State('battery-selector', 'value'),
+        State('battery-input', 'value'),
+        State('V-input', 'value'),
+        State('I-input', 'value'),
+        State('C-input', 'value'),
+        State('T-input', 'value')
+    ]
+)
+def update_battery_store(n_clicks, battery_data, selected_battery, battery_percentage, V, I, C, T):
     if selected_battery is not None and battery_percentage is not None:
         status, color = get_battery_status_and_color(battery_percentage)
         battery_data[selected_battery - 1] = {
@@ -99,7 +109,15 @@ def update_battery_components(n_clicks, selected_battery, battery_percentage, V,
             'C': C,
             'T': T
         }
+    return battery_data
 
+# Callback to update battery components on the page
+@dash.callback(
+    Output('battery-components', 'children'),
+    Input('battery-store', 'data')
+)
+# create 90 html batteries in 10 row and 9 columns
+def update_battery_components(battery_data):
     battery_components = []
     for row in range(10):
         row_components = []
@@ -118,64 +136,63 @@ def update_battery_components(n_clicks, selected_battery, battery_percentage, V,
                 T=battery['T'],
                 hue=(battery['num'] * 4) % 360
             )
-            row_components.append(html.Div(DangerouslySetInnerHTML(battery_html), style={'marginLeft': '-5px',
-                                                                                         'marginTop': '50px',
-                                                                                         'padding': '-100px'}))
-
+            row_components.append(html.Div(
+                DangerouslySetInnerHTML(battery_html),
+                style={'marginLeft': '-5px', 'marginTop': '50px', 'padding': '-100px'}
+            ))
         battery_components.append(html.Div(row_components, style={'display': 'flex', 'margin-bottom': '-90px'}))
     return battery_components
 
-
+# Register the page with the Dash app
 dash.register_page(__name__, path="/batteries", layout=layout)
 
-
-@app.callback(
-    Output('selected-port', 'data'),
-    Input({'type': 'port-item', 'index': dash.dependencies.ALL}, 'n_clicks'),
-    [State({'type': 'port-item', 'index': dash.dependencies.ALL}, 'children')],
-)
-def update_selected_port(n_clicks, port_labels):
-    ctx = dash.callback_context
-    if not ctx.triggered:
-        return dash.no_update
-    else:
-        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
-        selected_index = eval(button_id)['index']
-        return port_labels[selected_index]
+# Callbacks to update selected port and baudrate
+# @app.callback(
+#     Output('selected-port', 'data'),
+#     Input({'type': 'port-item', 'index': dash.dependencies.ALL}, 'n_clicks'),
+#     [State({'type': 'port-item', 'index': dash.dependencies.ALL}, 'children')],
+# )
 
 
-@app.callback(
-    Output('selected-baudrate', 'data'),
-    Input({'type': 'baudrate-item', 'index': dash.dependencies.ALL}, 'n_clicks'),
-    [State({'type': 'baudrate-item', 'index': dash.dependencies.ALL}, 'children')],
-)
+# def update_selected_port(n_clicks, port_labels):
+#     ctx = dash.callback_context
+#     if not ctx.triggered:
+#         return dash.no_update
+#     else:
+#         button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+#         selected_index = eval(button_id)['index']
+#         return port_labels[selected_index]
 
+# @app.callback(
+#     Output('selected-baudrate', 'data'),
+#     Input({'type': 'baudrate-item', 'index': dash.dependencies.ALL}, 'n_clicks'),
+#     [State({'type': 'baudrate-item', 'index': dash.dependencies.ALL}, 'children')],
+# )
+# def update_selected_baudrate(n_clicks, baudrate_labels):
+#     ctx = dash.callback_context
+#     if not ctx.triggered:
+#         return dash.no_update
+#     else:
+#         button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+#         selected_index = eval(button_id)['index']
+#         return baudrate_labels[selected_index]
 
-def update_selected_baudrate(n_clicks, baudrate_labels):
-    ctx = dash.callback_context
-    if not ctx.triggered:
-        return dash.no_update
-    else:
-        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
-        selected_index = eval(button_id)['index']
-        return baudrate_labels[selected_index]
-
-
-@app.callback(
-    Output("connect-button", "n_clicks"),
-    Input("connect-button", "n_clicks"),
-    State('selected-port', 'data'),
-    State('selected-baudrate', 'data'),
-)
-def handle_connect(n_clicks, selected_port, selected_baudrate):
-    if n_clicks > 0 and selected_port and selected_baudrate:
-        try:
-            ser = serial.Serial(selected_port, selected_baudrate)
-            print(f"Connected to {selected_port} at {selected_baudrate} baud rate")
-            # Here you can add additional logic after establishing the connection
-        except Exception as e:
-            print(f"Failed to connect: {e}")
-    return 0  # Reset the click count after handling
+# Callback to handle serial connection
+# @app.callback(
+#     Output("connect-button", "n_clicks"),
+#     Input("connect-button", "n_clicks"),
+#     State('selected-port', 'data'),
+#     State('selected-baudrate', 'data'),
+# )
+# def handle_connect(n_clicks, selected_port, selected_baudrate):
+#     if n_clicks > 0 and selected_port and selected_baudrate:
+#         try:
+#             ser = serial.Serial(selected_port, selected_baudrate)
+#             print(f"Connected to {selected_port} at {selected_baudrate} baud rate")
+#             # Here you can add additional logic after establishing the connection
+#         except Exception as e:
+#             print(f"Failed to connect: {e}")
+#     return 0  # Reset the click count after handling
 
 
 if __name__ == '__main__':
