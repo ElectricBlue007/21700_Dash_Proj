@@ -9,7 +9,6 @@ import serial
 # import navbar from directory layout
 from layouts.Navbar import navbar2
 
-app = dash.Dash(__name__)
 
 # HTML template for displaying battery information
 battery_html_template = '''
@@ -35,9 +34,8 @@ battery_html_template = '''
 
 # Initial battery data for 90 batteries
 initial_battery_data = [
-    {
-        'percentage': 20, 'status': '', 'liquid_color': 'linear-gradient(90deg, hsl(7, 89%, 46%) 15%, hsl(11, 93%, 68%) 100%)',
-        'num': i + 1, 'V': 0, 'I': 0, 'C': 0, 'T': 0
+    {'percentage': 0, 'status': '', 'liquid_color': '',
+     'num': i + 1, 'V': 0, 'I': 0, 'C': 0, 'T': 0
     } for i in range(90)
 ]
 
@@ -194,6 +192,3 @@ dash.register_page(__name__, path="/batteries", layout=layout)
 #             print(f"Failed to connect: {e}")
 #     return 0  # Reset the click count after handling
 
-
-if __name__ == '__main__':
-    app.run_server(debug=True)

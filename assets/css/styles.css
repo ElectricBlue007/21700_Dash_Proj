@@ -130,3 +130,22 @@ body {
 .dropdown-item:hover {
     color: darkcyan;
 }
+
+
+/* Adjust the navbar for small screens */
+@media (max-width: 767px) {
+    .navbar-nav {
+        flex-direction: row; /* Ensure horizontal layout on small screens */
+        font-size: 0.8rem; /* Adjust font size for better fit */
+    }
+
+    .navbar-nav .nav-item {
+        margin: 0 0.5rem; /* Adjust spacing between items */
+    }
+
+}
+@media (max-width: 768.87px) {
+    .navbar-nav {
+        flex-direction: row; /* Ensure horizontal layout on small screens */
+    }
+}

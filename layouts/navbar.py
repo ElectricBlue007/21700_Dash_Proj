@@ -4,7 +4,6 @@ import dash
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-
 dropdown_menu_items = [
     dbc.DropdownMenuItem(ports, id={"type": "port-item", "index": idx}) for idx, ports in enumerate(Listed_Ports)
 ]
@@ -64,7 +63,17 @@ navbar2 = dbc.Navbar(
                         connect_button,
                     ],
                     navbar=True,
-                    className="ml-auto",
+                    className="ml-auto navbar-nav",
+                    style={
+        'position': 'fixed',
+        'top': 0,
+        'left': '207px',
+        'right': 0,
+        'height': '60px',
+        'padding': '10px 20px',
+        'borderRadius': '10px',
+        'zIndex': 2
+    }
                 ),
                 id="navbar-collapse",
                 navbar=True,
