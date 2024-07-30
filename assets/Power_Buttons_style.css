@@ -32,7 +32,7 @@ body {
 
 .dashboard {
     display: grid;
-    grid-template-columns: repeat(15, 1fr); /*Columns */
+    grid-template-columns: repeat(15, 1fr); /* Columns */
     gap: 15px; /* Adjust gap as needed */
     max-width: 1200px; /* Adjust max-width as needed */
     margin-top: 70px;
@@ -88,9 +88,8 @@ body {
 
 /* Dropdown Container */
 .dash-dropdown {
-    width: 1220px;
+    width: 100%;
     margin-top: 20px;
-    margin-right: 130px;
     padding: 10px;
     font-size: 1em;
     color: #aaa;
@@ -123,6 +122,145 @@ body {
 /* Dropdown Arrow */
 .dash-dropdown .Select-arrow-zone {
     color: #aaa;
+}
+
+/* Hover and Focus Effects */
+.dash-dropdown .Select-control:hover,
+.dash-dropdown .Select-control:focus {
+    border-color: #666;
+}
+
+.dash-dropdown .Select-option.is-focused {
+    background-color: #555;
+    color: #fff;
+}
+
+.dash-dropdown .Select-option.is-selected {
+    background-color: #666;
+    color: #fff;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background with opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #1e1e1e; /* Dark background for modal content */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #444;
+    width: 80%; /* Could be more or less, depending on screen size */
+    color: #ddd; /* Light text color for contrast */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Close Button */
+.close-button {
+    color: #ddd; /* Light color for the close button */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    border: none;
+    background: none;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff; /* Highlight color on hover/focus */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Input Fields */
+.input-field {
+    margin: 5px;
+    padding: 5px;
+    font-size: 1em;
+    border: 1px solid #555; /* Darker border for inputs */
+    border-radius: 4px;
+    background-color: #333; /* Dark background for inputs */
+    color: #ddd; /* Light text color for inputs */
+}
+
+/* Dropdown Styles */
+.dash-dropdown {
+    margin: 10px;
+    background-color: #333; /* Dark background for dropdown */
+    color: #ddd; /* Light text color for dropdown */
+}
+
+/* Dropdown Options */
+.dash-dropdown .Select-menu-outer {
+    background-color: #333;
+    color: #ddd;
+}
+
+/* Selected Dropdown Options */
+.dash-dropdown .Select-value-label {
+    background-color: #222;
+    color: #ddd;
+}
+
+/* Dropdown Placeholder */
+.dash-dropdown .Select-placeholder {
+    color: #888;
+}
+
+/* Dropdown Control */
+.dash-dropdown .Select-control {
+    background-color: #444;
+    border: 1px solid #444;
+    color: #ddd;
+}
+
+/* Dropdown Arrow */
+.dash-dropdown .Select-arrow-zone {
+    color: #ddd;
 }
 
 /* Hover and Focus Effects */
