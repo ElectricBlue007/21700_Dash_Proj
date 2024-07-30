@@ -8,7 +8,7 @@ from dash_dangerously_set_inner_html import DangerouslySetInnerHTML
 import serial
 # import navbar from directory layout
 from layouts.Navbar import navbar2
-
+import time
 
 # HTML template for displaying battery information
 battery_html_template = '''
@@ -145,7 +145,7 @@ def update_battery_components(battery_data):
         )
         battery_components.append(html.Div(
             DangerouslySetInnerHTML(battery_html),
-            style={'margin': '5px', 'padding': '10px', 'flexBasis': '150px'}
+            style={'margin': '10px', 'padding': '15px', 'flexBasis': '150px'}
         ))
     return html.Div(battery_components, style={'display': 'flex', 'flexWrap': 'wrap', 'justifyContent': 'center',
                                                'marginTop': '70px'})

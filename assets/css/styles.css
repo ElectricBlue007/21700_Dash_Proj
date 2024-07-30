@@ -49,7 +49,9 @@ body {
 }
 
 .battery__card {
-    max-width: 500px;
+    /*max-width: 500px;*/
+    width: 300px;
+    height: 300px;
     background-color: hsl(0, 0%, 9%);
     border-radius: 1rem;
     display: flex;
@@ -114,9 +116,9 @@ body {
 .glass {
     background: rgba(119, 150, 153, 0.02);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(0.5px);
-    -webkit-backdrop-filter: blur(0.5px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Reduced blur radius and spread */
+    backdrop-filter: blur(0.25px);
+    -webkit-backdrop-filter: blur(0.25px);
 }
 .dropdown-menu.show {
     background-color: #343a40 !important;
