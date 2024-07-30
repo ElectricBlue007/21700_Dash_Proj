@@ -1,0 +1,142 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Style */
+body {
+    display: flex;
+    flex-direction: column; /* Ensure body layout is column to stack sections */
+    min-height: 100vh;
+    background: rgb(0,0,0);
+    background: linear-gradient(356deg, rgba(0,0,0,1) 0%, rgba(6,1,61,1) 57%, rgba(0,0,0,1) 100%);
+    margin: 0;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    flex-direction: row; /* Align items horizontally */
+    padding: 20px;
+}
+
+/* Main Dashboard */
+.main-dashboard {
+    flex: 1; /* Allows this section to take up remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr); /*Columns */
+    gap: 15px; /* Adjust gap as needed */
+    max-width: 1200px; /* Adjust max-width as needed */
+    margin-top: 70px;
+    margin-right: 110px;
+    width: 100%;
+    padding: 10px;
+    background: #2d2d2d;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.button {
+    width: 50px; /* Smaller width */
+    height: 50px; /* Smaller height */
+    background: #222;
+    border-radius: 50%;
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, .1),
+    5px 5px 10px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    font-size: 0.8em; /* Smaller font size */
+    color: #aaa;
+    margin: 5px;
+    text-shadow: none;
+}
+
+/* Button Active State */
+.button.green {
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0;
+    box-shadow: inset -5px -5px 10px rgba(255, 255, 255, .1),
+                inset 5px 5px 10px rgba(0, 0, 0, .5);
+}
+
+/* Toggle Buttons */
+.toggle-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.toggle-buttons .button {
+    width: 120px; /* Adjust button width as needed */
+    height: 40px; /* Adjust button height as needed */
+    font-size: 1em; /* Adjust font size as needed */
+    margin: 0 10px; /* Adjust margin as needed */
+    border-radius: 5px; /* Adjust border radius as needed */
+}
+
+/* Dropdown Container */
+.dash-dropdown {
+    width: 1220px;
+    margin-top: 20px;
+    margin-right: 130px;
+    padding: 10px;
+    font-size: 1em;
+    color: #aaa;
+}
+
+/* Dropdown Options */
+.dash-dropdown .Select-menu-outer {
+    background-color: #333;
+    color: #aaa;
+}
+
+/* Selected Dropdown Options */
+.dash-dropdown .Select-value-label {
+    background-color: #151515;
+    color: #aaa;
+}
+
+/* Dropdown Placeholder */
+.dash-dropdown .Select-placeholder {
+    color: #666;
+}
+
+/* Dropdown Control */
+.dash-dropdown .Select-control {
+    background-color: #282828;
+    border: 1px solid #282828;
+    color: #aaa;
+}
+
+/* Dropdown Arrow */
+.dash-dropdown .Select-arrow-zone {
+    color: #aaa;
+}
+
+/* Hover and Focus Effects */
+.dash-dropdown .Select-control:hover,
+.dash-dropdown .Select-control:focus {
+    border-color: #666;
+}
+
+.dash-dropdown .Select-option.is-focused {
+    background-color: #555;
+    color: #fff;
+}
+
+.dash-dropdown .Select-option.is-selected {
+    background-color: #666;
+    color: #fff;
+}
