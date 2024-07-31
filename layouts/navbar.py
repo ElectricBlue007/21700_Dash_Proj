@@ -50,6 +50,10 @@ connect_button = dbc.NavItem(
     dbc.Button("Connect", color="primary", outline=True, className="mr-2", id="connect-button", n_clicks=0)
 )
 
+select_channels_button = dbc.NavItem(
+    dbc.Button("Select Channels", color="primary", outline=True, className="mr-2 d-none d-md-inline", id="select-channels-button", n_clicks=0)
+)
+
 navbar2 = dbc.Navbar(
     dbc.Container(
         [
@@ -61,19 +65,20 @@ navbar2 = dbc.Navbar(
                         dropdown_Cum,
                         dropdown_Ports,
                         connect_button,
+                        select_channels_button,
                     ],
                     navbar=True,
                     className="ml-auto navbar-nav",
                     style={
-        'position': 'fixed',
-        'top': 0,
-        'left': '207px',
-        'right': 0,
-        'height': '60px',
-        'padding': '10px 20px',
-        'borderRadius': '10px',
-        'zIndex': 2
-    }
+                        'position': 'fixed',
+                        'top': 0,
+                        'left': '207px',
+                        'right': 0,
+                        'height': '60px',
+                        'padding': '10px 20px',
+                        'borderRadius': '10px',
+                        'zIndex': 2
+                    }
                 ),
                 id="navbar-collapse",
                 navbar=True,
@@ -94,3 +99,15 @@ navbar2 = dbc.Navbar(
         'zIndex': 2
     }
 )
+
+app.layout = dbc.Container(
+    [
+        navbar2,
+        # Other components of your layout
+    ],
+    fluid=True,
+    style={'paddingTop': '70px'}  # Adjust the padding to avoid overlap with the fixed navbar
+)
+
+if __name__ == "__main__":
+    app.run_server(debug=True)

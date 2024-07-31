@@ -21,7 +21,7 @@ layout = html.Div([
             options=[{'label': str(i), 'value': i} for i in range(1, 91)],
             value=[],
             multi=True,
-            placeholder='Select numbers to highlight',
+            placeholder='Select Channels',
             className='dash-dropdown',
         ),
 
