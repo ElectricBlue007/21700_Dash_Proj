@@ -72,18 +72,44 @@ body {
 
 /* Toggle Buttons */
 .toggle-buttons {
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    display: flex;  /* Use flexbox to align items horizontally */
+    flex-direction: row;  /* Align items in a row */
+    justify-content: center;  /* Center align buttons */
+    margin-top: 20px;  /* Space above */
+    margin-bottom: 20px;  /* Space below */
+}
+.toggle-buttons .button {
+    width: 150px;  /* Increase button width */
+    height: 50px;  /* Increase button height */
+    font-size: 1.2em;  /* Increase font size */
+    margin: 0 10px;  /* Adjust margin for spacing */
+    border-radius: 5px;  /* Maintain border radius */
+    background: #444;  /* Button background */
+    color: #ddd;  /* Text color */
+    cursor: pointer;  /* Pointer cursor on hover */
 }
 
-.toggle-buttons .button {
-    width: 120px; /* Adjust button width as needed */
-    height: 40px; /* Adjust button height as needed */
-    font-size: 1em; /* Adjust font size as needed */
+.toggle-buttons .button:hover {
+    background: #666;  /* Darker background on hover */
+    color: #fff;  /* Light text color on hover */
+}
+
+/* Charge and Discharge Buttons */
+.charge-button, .discharge-button {
+    width: 150px; /* Adjust button width as needed */
+    height: 50px; /* Adjust button height as needed */
+    font-size: 1.2em; /* Adjust font size as needed */
     margin: 0 10px; /* Adjust margin as needed */
-    border-radius: 5px; /* Adjust border radius as needed */
+    border-radius: 8px; /* Adjust border radius as needed */
+    background: #444; /* Button background color */
+    color: #ddd; /* Button text color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, .1),
+                5px 5px 10px rgba(0, 0, 0, .5);
 }
 
 /* Dropdown Container */
@@ -154,6 +180,7 @@ body {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+/* Modal Content */
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
@@ -230,7 +257,7 @@ body {
 /* Dropdown Styles */
 .dash-dropdown {
     margin: 10px;
-    background-color: #333; /* Dark background for dropdown */
+    /*background-color: #333; !* Dark background for dropdown *!*/
     color: #ddd; /* Light text color for dropdown */
 }
 

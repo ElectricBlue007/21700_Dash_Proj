@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output, State
 app = dash.Dash(__name__)
 app.config.suppress_callback_exceptions = True
 
-# Define layout
+# Layout Definition
 layout = html.Div([
     # Main dashboard with buttons and multi-value dropdown
     html.Div([
@@ -16,8 +16,20 @@ layout = html.Div([
                 html.Div(str(i), id=f'button{i}', className='button') for i in range(1, 91)
             ]
         ),
-        html.Button('Charge', id='charge-button', className='button'),
-        html.Button('Discharge', id='discharge-button', className='button'),
+        dcc.Dropdown(
+            id='numberDropdown',
+            options=[{'label': str(i), 'value': i} for i in range(1, 91)],
+            value=[],
+            multi=True,
+            placeholder='Select numbers to highlight',
+            className='dash-dropdown',
+        ),
+
+        # Wrap the buttons in a flex container
+        html.Div(className='toggle-buttons', children=[
+            html.Button('Charge', id='charge-button', className='button'),
+            html.Button('Discharge', id='discharge-button', className='button'),
+        ]),
 
         # Modal for Charge Dropdown
         html.Div(
@@ -31,7 +43,7 @@ layout = html.Div([
                             id='chargeDropdown',
                             options=[
                                 {'label': 'CC', 'value': 'CC'},
-                                {'label': 'CU', 'value': 'CU'},
+                                {'label': 'CV', 'value': 'CU'},
                                 {'label': 'CP', 'value': 'CP'},
                                 {'label': 'CR', 'value': 'CR'},
                                 {'label': 'Rest', 'value': 'Rest'}
@@ -60,7 +72,6 @@ layout = html.Div([
                             id='dischargeDropdown',
                             options=[
                                 {'label': 'CC', 'value': 'CC'},
-                                {'label': 'CU', 'value': 'CU'},
                                 {'label': 'CP', 'value': 'CP'},
                                 {'label': 'CR', 'value': 'CR'},
                                 {'label': 'Rest', 'value': 'Rest'}
@@ -135,64 +146,52 @@ def update_charge_inputs(selected_options):
     if 'CC' in selected_options:
         inputs.extend([
             html.Div([
-                html.Label('CC_Time'),
-                dcc.Input(type='number', id='cc_time', className='input-field')
-            ]),
-            html.Div([
-                html.Label('CC_V'),
-                dcc.Input(type='number', id='cc_v', className='input-field')
-            ]),
-            html.Div([
                 html.Label('CC_I'),
-                dcc.Input(type='number', id='cc_i', className='input-field')
+                dcc.Input(type='number', id='ch_cc_i', className='input-field')
+            ]),
+            html.Div([
+                html.Label('CC_V-cut'),
+                dcc.Input(type='number', id='ch_cc_v_cut', className='input-field')
+            ]),
+            html.Div([
+                html.Label('CC_Time'),
+                dcc.Input(type='number', id='ch_cc_t', className='input-field')
             ])
         ])
 
-    if 'CU' in selected_options:
+    if 'CV' in selected_options:
         inputs.extend([
             html.Div([
-                html.Label('CU_I'),
-                dcc.Input(type='number', id='cu_i', className='input-field')
+                html.Label('CV_V'),
+                dcc.Input(type='number', id='ch_cv_v', className='input-field')
             ]),
             html.Div([
-                html.Label('CU_V'),
-                dcc.Input(type='number', id='cu_v', className='input-field')
+                html.Label('CV_I-cut'),
+                dcc.Input(type='number', id='ch_cv_i_cut', className='input-field')
             ]),
             html.Div([
-                html.Label('CU_V_cut'),
-                dcc.Input(type='number', id='cu_v_cut', className='input-field')
-            ]),
-            html.Div([
-                html.Label('CU_Time'),
-                dcc.Input(type='number', id='cu_time', className='input-field')
-            ]),
-            html.Div([
-                html.Label('CU_Cuur'),
-                dcc.Input(type='number', id='cu_cuur', className='input-field')
-            ]),
-            html.Div([
-                html.Label('CU_Power'),
-                dcc.Input(type='number', id='cu_power', className='input-field')
+                html.Label('CV_Time'),
+                dcc.Input(type='number', id='ch_cv_t', className='input-field')
             ])
         ])
 
     if 'CP' in selected_options:
         inputs.extend([
             html.Div([
-                html.Label('CP_V_cut'),
-                dcc.Input(type='number', id='cu_i', className='input-field')
+                html.Label('CP_V-cut'),
+                dcc.Input(type='number', id='ch_cp_v_cut', className='input-field')
             ]),
             html.Div([
-                html.Label('CP_Time'),
-                dcc.Input(type='number', id='cu_v', className='input-field')
-            ]),
-            html.Div([
-                html.Label('CP_Curr'),
-                dcc.Input(type='number', id='cu_v_cut', className='input-field')
+                html.Label('CP_Current'),
+                dcc.Input(type='number', id='ch_cp_cur', className='input-field')
             ]),
             html.Div([
                 html.Label('CP_Power'),
-                dcc.Input(type='number', id='cu_time', className='input-field')
+                dcc.Input(type='number', id='ch_cp_pow', className='input-field')
+            ]),
+            html.Div([
+                html.Label('CP_Time'),
+                dcc.Input(type='number', id='ch_cp_t', className='input-field')
 
             ])
         ])
@@ -201,20 +200,20 @@ def update_charge_inputs(selected_options):
     if 'CR' in selected_options:
         inputs.extend([
             html.Div([
-                html.Label('CR_V_cut'),
-                dcc.Input(type='number', id='cr_v_cut', className='input-field')
+                html.Label('CR_R'),
+                dcc.Input(type='number', id='ch_cr_r', className='input-field')
             ]),
             html.Div([
-                html.Label('CR_Time'),
-                dcc.Input(type='number', id='cr_time', className='input-field')
+                html.Label('CR_V_cut'),
+                dcc.Input(type='number', id='ch_cr_v_cut', className='input-field')
             ]),
             html.Div([
                 html.Label('CR_I_cut'),
-                dcc.Input(type='number', id='cr_i_cut', className='input-field')
+                dcc.Input(type='number', id='ch_cr_i_cut', className='input-field')
             ]),
             html.Div([
-                html.Label('CR_R'),
-                dcc.Input(type='number', id='cr_r', className='input-field')
+                html.Label('CR_Time'),
+                dcc.Input(type='number', id='ch_cr_t', className='input-field')
             ])
         ])
 
@@ -222,7 +221,7 @@ def update_charge_inputs(selected_options):
         inputs.extend([
             html.Div([
                 html.Label('Rest_Time'),
-                dcc.Input(type='number', id='rest_time', className='input-field')
+                dcc.Input(type='number', id='ch_rest_t', className='input-field')
             ])
         ])
 
@@ -241,15 +240,15 @@ def update_discharge_inputs(selected_options):
         inputs.extend([
             html.Div([
                 html.Label('CC_Time'),
-                dcc.Input(type='number', id='cc_time_discharge', className='input-field')
+                dcc.Input(type='number', id='dch_cc_t', className='input-field')
             ]),
             html.Div([
                 html.Label('CC_V'),
-                dcc.Input(type='number', id='cc_v_discharge', className='input-field')
+                dcc.Input(type='number', id='dch_cc_v', className='input-field')
             ]),
             html.Div([
                 html.Label('CC_I'),
-                dcc.Input(type='number', id='cc_i_discharge', className='input-field')
+                dcc.Input(type='number', id='dch_cc_i', className='input-field')
             ])
         ])
 
@@ -257,48 +256,20 @@ def update_discharge_inputs(selected_options):
         inputs.extend([
             html.Div([
                 html.Label('CP_V_cut'),
-                dcc.Input(type='number', id='cu_i', className='input-field')
+                dcc.Input(type='number', id='dch_cp_v_cut', className='input-field')
             ]),
             html.Div([
                 html.Label('CP_Time'),
-                dcc.Input(type='number', id='cu_v', className='input-field')
+                dcc.Input(type='number', id='dch_cp_t', className='input-field')
             ]),
             html.Div([
                 html.Label('CP_Curr'),
-                dcc.Input(type='number', id='cu_v_cut', className='input-field')
+                dcc.Input(type='number', id='dch_cp_cur', className='input-field')
             ]),
             html.Div([
                 html.Label('CP_Power'),
-                dcc.Input(type='number', id='cu_time', className='input-field')
+                dcc.Input(type='number', id='dch_cp_pow', className='input-field')
 
-            ])
-        ])
-
-    if 'CU' in selected_options:
-        inputs.extend([
-            html.Div([
-                html.Label('CU_I'),
-                dcc.Input(type='number', id='cu_i_discharge', className='input-field')
-            ]),
-            html.Div([
-                html.Label('CU_V'),
-                dcc.Input(type='number', id='cu_v_discharge', className='input-field')
-            ]),
-            html.Div([
-                html.Label('CU_V_cut'),
-                dcc.Input(type='number', id='cu_v_cut_discharge', className='input-field')
-            ]),
-            html.Div([
-                html.Label('CU_Time'),
-                dcc.Input(type='number', id='cu_time_discharge', className='input-field')
-            ]),
-            html.Div([
-                html.Label('CU_Cuur'),
-                dcc.Input(type='number', id='cu_cuur_discharge', className='input-field')
-            ]),
-            html.Div([
-                html.Label('CU_Power'),
-                dcc.Input(type='number', id='cu_power_discharge', className='input-field')
             ])
         ])
 
@@ -306,19 +277,19 @@ def update_discharge_inputs(selected_options):
         inputs.extend([
             html.Div([
                 html.Label('CR_V_cut'),
-                dcc.Input(type='number', id='cr_v_cut_discharge', className='input-field')
+                dcc.Input(type='number', id='dch_cr_v_cut', className='input-field')
             ]),
             html.Div([
                 html.Label('CR_Time'),
-                dcc.Input(type='number', id='cr_time_discharge', className='input-field')
+                dcc.Input(type='number', id='dch_cr_t', className='input-field')
             ]),
             html.Div([
                 html.Label('CR_I_cut'),
-                dcc.Input(type='number', id='cr_i_cut_discharge', className='input-field')
+                dcc.Input(type='number', id='dch_cr_i_cut', className='input-field')
             ]),
             html.Div([
                 html.Label('CR_R'),
-                dcc.Input(type='number', id='cr_r_discharge', className='input-field')
+                dcc.Input(type='number', id='dch_cr_r', className='input-field')
             ])
         ])
 
@@ -326,11 +297,12 @@ def update_discharge_inputs(selected_options):
         inputs.extend([
             html.Div([
                 html.Label('Rest_Time'),
-                dcc.Input(type='number', id='rest_time_discharge', className='input-field')
+                dcc.Input(type='number', id='dch_rest_t', className='input-field')
             ])
         ])
 
     return inputs
+
 
 
 if __name__ == '__main__':
