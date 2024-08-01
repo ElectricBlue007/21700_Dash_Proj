@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output, State
 from dash_dangerously_set_inner_html import DangerouslySetInnerHTML
 import serial
 # import navbar from directory layout
-from layouts.Navbar import navbar2
+from layouts.navbar import navbar2
 import time
 
 # HTML template for displaying battery information

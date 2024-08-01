@@ -43,7 +43,7 @@ layout = html.Div([
                             id='chargeDropdown',
                             options=[
                                 {'label': 'CC', 'value': 'CC'},
-                                {'label': 'CV', 'value': 'CU'},
+                                {'label': 'CV', 'value': 'CV'},
                                 {'label': 'CP', 'value': 'CP'},
                                 {'label': 'CR', 'value': 'CR'},
                                 {'label': 'Rest', 'value': 'Rest'}
@@ -303,8 +303,8 @@ def update_discharge_inputs(selected_options):
 
     return inputs
 
-
+dash.register_page(__name__, path="/sl_chan")
 
 if __name__ == '__main__':
     app.layout = layout
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=20202)

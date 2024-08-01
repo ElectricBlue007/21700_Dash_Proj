@@ -51,7 +51,7 @@ connect_button = dbc.NavItem(
 )
 
 select_channels_button = dbc.NavItem(
-    dbc.Button("Select Channels", color="primary", outline=True, className="mr-2 d-none d-md-inline", id="select-channels-button", n_clicks=0)
+    dbc.Button("Select Channels", color="primary", outline=True, className="mr-2", active="exact", href="/sl_chan", n_clicks=0)
 )
 
 navbar2 = dbc.Navbar(

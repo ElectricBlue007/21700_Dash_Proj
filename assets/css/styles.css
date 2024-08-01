@@ -151,3 +151,310 @@ body {
         flex-direction: row; /* Ensure horizontal layout on small screens */
     }
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Style */
+body {
+    display: flex;
+    flex-direction: column; /* Ensure body layout is column to stack sections */
+    min-height: 100vh;
+    background: rgb(0,0,0);
+    background: linear-gradient(356deg, rgba(0,0,0,1) 0%, rgba(6,1,61,1) 57%, rgba(0,0,0,1) 100%);
+    margin: 0;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    flex-direction: row; /* Align items horizontally */
+    padding: 20px;
+}
+
+/* Main Dashboard */
+.main-dashboard {
+    flex: 1; /* Allows this section to take up remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr); /* Columns */
+    gap: 15px; /* Adjust gap as needed */
+    max-width: 1200px; /* Adjust max-width as needed */
+    margin-top: 70px;
+    margin-right: 110px;
+    width: 100%;
+    padding: 10px;
+    background: #2d2d2d;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.button {
+    width: 50px; /* Smaller width */
+    height: 50px; /* Smaller height */
+    background: #222;
+    border-radius: 50%;
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, .1),
+    5px 5px 10px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    font-size: 0.8em; /* Smaller font size */
+    color: #aaa;
+    margin: 5px;
+    text-shadow: none;
+}
+
+/* Button Active State */
+.button.green {
+    color: #0f0;
+    text-shadow: 0 0 10px #0f0;
+    box-shadow: inset -5px -5px 10px rgba(255, 255, 255, .1),
+                inset 5px 5px 10px rgba(0, 0, 0, .5);
+}
+
+/* Toggle Buttons */
+.toggle-buttons {
+    display: flex;  /* Use flexbox to align items horizontally */
+    flex-direction: row;  /* Align items in a row */
+    justify-content: center;  /* Center align buttons */
+    margin-top: 20px;  /* Space above */
+    margin-bottom: 20px;  /* Space below */
+}
+.toggle-buttons .button {
+    width: 150px;  /* Increase button width */
+    height: 50px;  /* Increase button height */
+    font-size: 1.2em;  /* Increase font size */
+    margin: 0 10px;  /* Adjust margin for spacing */
+    border-radius: 5px;  /* Maintain border radius */
+    background: #444;  /* Button background */
+    color: #ddd;  /* Text color */
+    cursor: pointer;  /* Pointer cursor on hover */
+}
+
+.toggle-buttons .button:hover {
+    background: #666;  /* Darker background on hover */
+    color: #fff;  /* Light text color on hover */
+}
+
+/* Charge and Discharge Buttons */
+.charge-button, .discharge-button {
+    width: 150px; /* Adjust button width as needed */
+    height: 50px; /* Adjust button height as needed */
+    font-size: 1.2em; /* Adjust font size as needed */
+    margin: 0 10px; /* Adjust margin as needed */
+    border-radius: 8px; /* Adjust border radius as needed */
+    background: #444; /* Button background color */
+    color: #ddd; /* Button text color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, .1),
+                5px 5px 10px rgba(0, 0, 0, .5);
+}
+
+/* Dropdown Container */
+.dash-dropdown {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1em;
+    color: #aaa;
+}
+
+/* Dropdown Options */
+.dash-dropdown .Select-menu-outer {
+    background-color: #333;
+    color: #aaa;
+}
+
+/* Selected Dropdown Options */
+.dash-dropdown .Select-value-label {
+    background-color: #151515;
+    color: #aaa;
+}
+
+/* Dropdown Placeholder */
+.dash-dropdown .Select-placeholder {
+    color: #666;
+}
+
+/* Dropdown Control */
+.dash-dropdown .Select-control {
+    background-color: #282828;
+    border: 1px solid #282828;
+    color: #aaa;
+}
+
+/* Dropdown Arrow */
+.dash-dropdown .Select-arrow-zone {
+    color: #aaa;
+}
+
+/* Hover and Focus Effects */
+.dash-dropdown .Select-control:hover,
+.dash-dropdown .Select-control:focus {
+    border-color: #666;
+}
+
+.dash-dropdown .Select-option.is-focused {
+    background-color: #555;
+    color: #fff;
+}
+
+.dash-dropdown .Select-option.is-selected {
+    background-color: #666;
+    color: #fff;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background with opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #1e1e1e; /* Dark background for modal content */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #444;
+    width: 80%; /* Could be more or less, depending on screen size */
+    color: #ddd; /* Light text color for contrast */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Close Button */
+.close-button {
+    color: #ddd; /* Light color for the close button */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    border: none;
+    background: none;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff; /* Highlight color on hover/focus */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Input Fields */
+.input-field {
+    margin: 5px;
+    padding: 5px;
+    font-size: 1em;
+    border: 1px solid #555; /* Darker border for inputs */
+    border-radius: 4px;
+    background-color: #333; /* Dark background for inputs */
+    color: #ddd; /* Light text color for inputs */
+}
+
+/* Dropdown Styles */
+.dash-dropdown {
+    margin: 10px;
+    /*background-color: #333; !* Dark background for dropdown *!*/
+    color: #ddd; /* Light text color for dropdown */
+}
+
+/* Dropdown Options */
+.dash-dropdown .Select-menu-outer {
+    background-color: #333;
+    color: #ddd;
+}
+
+/* Selected Dropdown Options */
+.dash-dropdown .Select-value-label {
+    background-color: #222;
+    color: #ddd;
+}
+
+/* Dropdown Placeholder */
+.dash-dropdown .Select-placeholder {
+    color: #888;
+}
+
+/* Dropdown Control */
+.dash-dropdown .Select-control {
+    background-color: #444;
+    border: 1px solid #444;
+    color: #ddd;
+}
+
+/* Dropdown Arrow */
+.dash-dropdown .Select-arrow-zone {
+    color: #ddd;
+}
+
+/* Hover and Focus Effects */
+.dash-dropdown .Select-control:hover,
+.dash-dropdown .Select-control:focus {
+    border-color: #666;
+}
+
+.dash-dropdown .Select-option.is-focused {
+    background-color: #555;
+    color: #fff;
+}
+
+.dash-dropdown .Select-option.is-selected {
+    background-color: #666;
+    color: #fff;
+}
