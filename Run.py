@@ -1,7 +1,7 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import html, page_container
-from callbacks.callbacks import register_callbacks
+from callbacks.callbacks import register_callbacks, register_selector_callbacks
 from layouts.sidebar import sidebar
 
 app = dash.Dash(
@@ -23,9 +23,9 @@ app.layout = html.Div(
             id='page-content',
             className="content",
             style={
-                # 'marginLeft': '200px',
+                'marginLeft': '320px',
                 # 'marginTop': '70px',
-                # 'padding': '20px'
+                'padding': '-10px'
             }
         ),
     ]
@@ -33,6 +33,7 @@ app.layout = html.Div(
 
 # Register callbacks
 register_callbacks(app)
+register_selector_callbacks(app)
 
 # Run the app
 if __name__ == "__main__":
