@@ -38,9 +38,11 @@ def register_selector_callbacks(app):
         [Input('charge-button', 'n_clicks'),
         Input('discharge-button', 'n_clicks'),
         Input('close-charge-modal', 'n_clicks'),
-        Input('close-discharge-modal', 'n_clicks')]
+        Input('close-discharge-modal', 'n_clicks'),
+        Input('ok-charge-modal', 'n_clicks'),
+        Input('ok-discharge-modal', 'n_clicks')]
     )
-    def toggle_modal(charge_clicks, discharge_clicks, close_charge_clicks, close_discharge_clicks):
+    def toggle_modal(charge_clicks, discharge_clicks, close_charge_clicks, close_discharge_clicks, ok_charge_clicks, ok_discharge_clicks):
         ctx = dash.callback_context
 
         if not ctx.triggered:
@@ -55,6 +57,10 @@ def register_selector_callbacks(app):
         elif button_id == 'close-charge-modal':
             return {'display': 'none'}, {'display': 'none'}
         elif button_id == 'close-discharge-modal':
+            return {'display': 'none'}, {'display': 'none'}
+        elif button_id == 'ok-charge-modal':
+            return {'display': 'none'}, {'display': 'none'}
+        elif button_id == 'ok-discharge-modal':
             return {'display': 'none'}, {'display': 'none'}
         else:
             return {'display': 'none'}, {'display': 'none'}

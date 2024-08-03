@@ -31,6 +31,9 @@ layout = html.Div([
             html.Button('Discharge', id='discharge-button', className='button'),
         ]),
 
+        html.Div(className='toggle-buttons', children=[
+            html.Button('Done', id='done-button', className='done-button'),
+        ]),
         # Modal for Charge Dropdown
         html.Div(
             id='charge-modal',
@@ -54,7 +57,8 @@ layout = html.Div([
                             className='dash-dropdown',  # Custom class name
                         ),
                         html.Div(id='charge-inputs'),
-                        html.Button('Close', id='close-charge-modal', className='close-button')
+                        html.Button('Close', id='close-charge-modal', className='close-button'),
+                        html.Button('OK', id='ok-charge-modal', className='ok-button')
                     ]
                 )
             ]
@@ -82,7 +86,9 @@ layout = html.Div([
                             className='dash-dropdown',  # Custom class name
                         ),
                         html.Div(id='discharge-inputs'),
-                        html.Button('Close', id='close-discharge-modal', className='close-button')
+                        html.Button('Close', id='close-discharge-modal', className='close-button'),
+                        html.Button('OK', id='ok-discharge-modal', className='ok-button')
+
                     ]
                 )
             ]

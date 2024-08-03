@@ -209,6 +209,24 @@ body {
     text-shadow: none;
 }
 
+.done-button {
+    width: 85px; /* Smaller width */
+    height: 85px; /* Smaller height */
+    background: #222;
+    border-radius: 50%;
+    box-shadow: -5px -5px 10px rgba(255, 255, 255, .1),
+    5px 5px 10px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    font-size: 0.8em; /* Smaller font size */
+    color: #aaa;
+    margin: 5px;
+    text-shadow: none;
+}
+
 /* Button Active State */
 .button.green {
     color: #0f0;
@@ -347,8 +365,23 @@ body {
     background: none;
 }
 
+.ok-button {
+    color: #ddd; /* Light color for the close button */
+    font-size: 28px;
+    font-weight: bold;
+    border: none;
+    background: none;
+}
+
 .close-button:hover,
 .close-button:focus {
+    color: #fff; /* Highlight color on hover/focus */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.ok-button:hover,
+.ok-button:focus {
     color: #fff; /* Highlight color on hover/focus */
     text-decoration: none;
     cursor: pointer;
