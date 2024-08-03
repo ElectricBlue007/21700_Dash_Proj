@@ -38,6 +38,17 @@ body {
 .gradient-color-green::after {
     background: linear-gradient(90deg, var(--color-green) 15%, hsl(92, 90%, 68%) 100%);
 }
+.sidebar {
+    position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 205px;
+        padding: 20px;
+        background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(3,2,74,1) 56%, rgba(0,0,0,1) 100%);
+        border-radius: 10px;
+        z-index: 2
+    }
 
 /* Battery styles */
 .battery {
@@ -133,25 +144,6 @@ body {
     color: darkcyan;
 }
 
-
-/* Adjust the navbar for small screens */
-@media (max-width: 767px) {
-    .navbar-nav {
-        flex-direction: row; /* Ensure horizontal layout on small screens */
-        font-size: 0.8rem; /* Adjust font size for better fit */
-    }
-
-    .navbar-nav .nav-item {
-        margin: 0 0.5rem; /* Adjust spacing between items */
-    }
-
-}
-@media (max-width: 768.87px) {
-    .navbar-nav {
-        flex-direction: row; /* Ensure horizontal layout on small screens */
-    }
-}
-
 /* Body Style */
 body {
     display: flex;
@@ -209,6 +201,7 @@ body {
     text-shadow: none;
 }
 
+
 .done-button {
     width: 85px; /* Smaller width */
     height: 85px; /* Smaller height */
@@ -235,15 +228,20 @@ body {
                 inset 5px 5px 10px rgba(0, 0, 0, .5);
 }
 
-/* Toggle Buttons */
+.data-table {
+    margin-right: 100px;
+}
+
+/* Toggle Buttons(charge and discharge) */
 .toggle-buttons {
     display: flex;  /* Use flexbox to align items horizontally */
     flex-direction: row;  /* Align items in a row */
     justify-content: center;  /* Center align buttons */
     margin-top: 20px;  /* Space above */
     margin-bottom: 20px;  /* Space below */
+    margin-right: 150px;
 }
-.toggle-buttons .button {
+.toggle-buttons .ch-button {
     width: 150px;  /* Increase button width */
     height: 50px;  /* Increase button height */
     font-size: 1.2em;  /* Increase font size */
@@ -254,7 +252,23 @@ body {
     cursor: pointer;  /* Pointer cursor on hover */
 }
 
-.toggle-buttons .button:hover {
+.toggle-buttons .ch-button:hover {
+    background: #666;  /* Darker background on hover */
+    color: #fff;  /* Light text color on hover */
+}
+
+.toggle-buttons .dch-button {
+    width: 150px;  /* Increase button width */
+    height: 50px;  /* Increase button height */
+    font-size: 1.2em;  /* Increase font size */
+    margin: 0 10px;  /* Adjust margin for spacing */
+    border-radius: 5px;  /* Maintain border radius */
+    background: #444;  /* Button background */
+    color: #ddd;  /* Text color */
+    cursor: pointer;  /* Pointer cursor on hover */
+}
+
+.toggle-buttons .dch-button:hover {
     background: #666;  /* Darker background on hover */
     color: #fff;  /* Light text color on hover */
 }
@@ -400,7 +414,8 @@ body {
 
 /* Dropdown Styles */
 .dash-dropdown {
-    margin: 10px;
+    margin-right: 123px;
+    width: 1220px;
     /*background-color: #333; !* Dark background for dropdown *!*/
     color: #ddd; /* Light text color for dropdown */
 }

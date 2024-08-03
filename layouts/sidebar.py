@@ -38,16 +38,5 @@ sidebar = html.Div(
             pills=True,
         ),
     ],
-    className="sidebar",
-    style={
-        'position': 'fixed',
-        'top': 0,
-        'left': 0,
-        'bottom': 0,
-        'width': '205px',
-        'padding': '20px',
-        'background': 'linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(3,2,74,1) 56%, rgba(0,0,0,1) 100%)',
-        'borderRadius': '10px',
-        'zIndex': 2
-    }
+    className="sidebar"
 )

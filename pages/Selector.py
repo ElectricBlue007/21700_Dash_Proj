@@ -44,8 +44,8 @@ layout = html.Div([
 
         # Wrap the buttons in a flex container
         html.Div(className='toggle-buttons', children=[
-            html.Button('Charge', id='charge-button', className='button'),
-            html.Button('Discharge', id='discharge-button', className='button'),
+            html.Button('Charge', id='charge-button', className='ch-button'),
+            html.Button('Discharge', id='discharge-button', className='dch-button'),
         ]),
 
         html.Div(className='toggle-buttons', children=[
