@@ -88,7 +88,10 @@ layout = html.Div([
             ]
         )
     ], className='main-dashboard')
-],)
+],style={
+                'marginLeft': '320px',
+                'padding': '-10px'
+            })
 
 dash.register_page(__name__, path="/sl_chan")
 

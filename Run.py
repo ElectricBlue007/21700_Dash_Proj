@@ -23,9 +23,9 @@ app.layout = html.Div(
             id='page-content',
             className="content",
             style={
-                'marginLeft': '320px',
+                # 'marginLeft': '320px',
                 # 'marginTop': '70px',
-                'padding': '-10px'
+                # 'padding': '-10px'
             }
         ),
     ]
