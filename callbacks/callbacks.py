@@ -1,11 +1,22 @@
-from dash import Input, Output, State
 import dash
 from dash import html, dcc
-
-
+from dash.dependencies import Input, Output, State
+from dash import callback
 app = dash.Dash(__name__)
 
 def register_callbacks(app):
+    @callback(
+        Output('datatable', 'data'),
+        Input('done-button', 'n_clicks'),
+        State('datatable', 'data'),
+        prevent_initial_call=True
+    )
+    def add_done_row(n_clicks, current_data):
+        if n_clicks:
+            new_row = {f'column{i}': 'Done' if i == 1 else '' for i in range(1, 11)}
+            current_data.append(new_row)
+            return current_data
+        return current_data
 
     @app.callback(
         Output("reset-errors-link", "active"),
@@ -231,3 +242,5 @@ def register_selector_callbacks(app):
             ])
 
         return inputs
+from dash.dependencies import Input, Output, State
+from dash import callback

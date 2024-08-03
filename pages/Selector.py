@@ -1,9 +1,26 @@
 import dash
 from dash import html, dcc
-from dash.dependencies import Input, Output, State
+from dash_table import DataTable
+import callbacks  # Import the callbacks module
 
 app = dash.Dash(__name__)
 app.config.suppress_callback_exceptions = True
+
+dark_theme = {
+    'background': '#303030',
+    'text': '#FFFFFF',
+    'table_background': '#424242',
+    'table_text': '#FFFFFF',
+    'header_background': '#212121',
+    'header_text': '#FFFFFF'
+}
+
+# Initial data for the DataTable
+initial_data = [
+    {f'column{i}': f'{i}' for i in range(1, 11)},
+    {f'column{i}': f'{i*2}' for i in range(1, 11)},
+    {f'column{i}': f'{i*3}' for i in range(1, 11)}
+]
 
 # Layout Definition
 layout = html.Div([
@@ -92,12 +109,33 @@ layout = html.Div([
                     ]
                 )
             ]
+        ),
+        # Add DataTable with columns named Column1 to Column10
+        html.Div(
+            id='data-table',
+            className='data-table',
+            children=[
+                DataTable(
+                    id='datatable',
+                    columns=[{'name': f'Column{i}', 'id': f'column{i}'} for i in range(1, 11)],
+                    data=initial_data,
+                    style_header={
+                        'backgroundColor': dark_theme['header_background'],
+                        'color': dark_theme['header_text']
+                    },
+                    style_cell={
+                        'backgroundColor': dark_theme['table_background'],
+                        'color': dark_theme['table_text']
+                    },
+                    style_table={'overflowX': 'auto'}
+                )
+            ]
         )
     ], className='main-dashboard')
-],style={
-                'marginLeft': '320px',
-                'padding': '-10px'
-            })
+], style={
+    'marginLeft': '320px',
+    'padding': '-10px'
+})
 
 dash.register_page(__name__, path="/sl_chan")
 
