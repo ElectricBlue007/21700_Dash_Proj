@@ -13,7 +13,7 @@ def register_callbacks(app):
     )
     def add_done_row(n_clicks, current_data):
         if n_clicks:
-            new_row = {f'column{i}': 'Done' if i == 1 else '' for i in range(1, 11)}
+            new_row = {f'column{i}': 'End' if i == 1 else '' for i in range(1, 11)}
             current_data.append(new_row)
             return current_data
         return current_data

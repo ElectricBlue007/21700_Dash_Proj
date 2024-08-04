@@ -178,17 +178,17 @@ body {
     margin-right: 110px;
     width: 100%;
     padding: 10px;
-    background: #2d2d2d;
+    background: rgba(255, 255, 255, 0.01);
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(5, 255, 240, 0.19);
 }
 
 .button {
     width: 50px; /* Smaller width */
     height: 50px; /* Smaller height */
-    background: #222;
+    background: #02264f;
     border-radius: 50%;
-    box-shadow: -5px -5px 10px rgba(255, 255, 255, .1),
+    box-shadow: -5px -5px 10px rgba(2, 255, 246, 0.1),
     5px 5px 10px rgba(0, 0, 0, .5);
     display: flex;
     align-items: center;
@@ -205,17 +205,15 @@ body {
 .done-button {
     width: 85px; /* Smaller width */
     height: 85px; /* Smaller height */
-    background: #222;
-    border-radius: 50%;
-    box-shadow: -5px -5px 10px rgba(255, 255, 255, .1),
-    5px 5px 10px rgba(0, 0, 0, .5);
+    background: #001733;
+    border-radius: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: background 0.3s, box-shadow 0.3s;
     font-size: 0.8em; /* Smaller font size */
-    color: #aaa;
+    color: #0c9ed0;  /* Text color */
     margin: 5px;
     text-shadow: none;
 }
@@ -239,6 +237,7 @@ body {
     justify-content: center;  /* Center align buttons */
     margin-top: 20px;  /* Space above */
     margin-bottom: 20px;  /* Space below */
+    margin-bottom: 20px;  /* Space below */
     margin-right: 150px;
 }
 .toggle-buttons .ch-button {
@@ -247,14 +246,14 @@ body {
     font-size: 1.2em;  /* Increase font size */
     margin: 0 10px;  /* Adjust margin for spacing */
     border-radius: 5px;  /* Maintain border radius */
-    background: #444;  /* Button background */
-    color: #ddd;  /* Text color */
+    background: #001733;  /* Button background */
+    color: #0c9ed0;  /* Text color */
     cursor: pointer;  /* Pointer cursor on hover */
 }
 
 .toggle-buttons .ch-button:hover {
-    background: #666;  /* Darker background on hover */
-    color: #fff;  /* Light text color on hover */
+    background: #01295d;  /* Darker background on hover */
+    color: #0eb4e8;  /* Light text color on hover */
 }
 
 .toggle-buttons .dch-button {
@@ -263,14 +262,14 @@ body {
     font-size: 1.2em;  /* Increase font size */
     margin: 0 10px;  /* Adjust margin for spacing */
     border-radius: 5px;  /* Maintain border radius */
-    background: #444;  /* Button background */
-    color: #ddd;  /* Text color */
+    background: #001733;  /* Button background */
+    color: #0c9ed0;  /* Text color */
     cursor: pointer;  /* Pointer cursor on hover */
 }
 
 .toggle-buttons .dch-button:hover {
-    background: #666;  /* Darker background on hover */
-    color: #fff;  /* Light text color on hover */
+    background: #01295d;  /* Darker background on hover */
+    color: #0eb4e8;  /* Light text color on hover */
 }
 
 /* Charge and Discharge Buttons */
@@ -509,6 +508,7 @@ body {
 
     .modal-content {
         width: 65%;
+        color: #000115;
     }
 
 }

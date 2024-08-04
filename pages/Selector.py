@@ -9,10 +9,10 @@ app.config.suppress_callback_exceptions = True
 dark_theme = {
     'background': '#303030',
     'text': '#FFFFFF',
-    'table_background': '#424242',
-    'table_text': '#FFFFFF',
-    'header_background': '#212121',
-    'header_text': '#FFFFFF'
+    'table_background': '#0386723A',
+    'table_text': '#000115FF',
+    'header_background': '#035C863A',
+    'header_text': '#000115FF'
 }
 
 # Initial data for the DataTable
@@ -42,7 +42,6 @@ layout = html.Div([
             className='dash-dropdown',
         ),
 
-        # Wrap the buttons in a flex container
         html.Div(className='toggle-buttons', children=[
             html.Button('Charge', id='charge-button', className='ch-button'),
             html.Button('Discharge', id='discharge-button', className='dch-button'),
