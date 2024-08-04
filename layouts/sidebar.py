@@ -19,18 +19,24 @@ sidebar = html.Div(
                     active="exact",
                 ),
                 dbc.NavLink(
+                    [html.I(className="fa fa-line-chart"),
+                     html.Span(" Tables")],
+                    href="/tables",
+                    active="exact",
+                ),
+                dbc.NavLink(
+                    [html.I(className="fa-solid fa-list-check"),
+                     html.Span(" Management")],
+                    href="/admin",
+                    active="exact",
+                ),
+                dbc.NavLink(
                     [
                         html.I(className="fa fa-exclamation-circle"),
                         html.Span(" Reset Errors"),
                     ],
                     href="#",
                     id="reset-errors-link",
-                    active="exact",
-                ),
-                dbc.NavLink(
-                    [html.I(className="fa fa-line-chart"),
-                     html.Span(" Tables")],
-                    href="/tables",
                     active="exact",
                 ),
             ],
