@@ -16,13 +16,13 @@ body {
     align-items: center; /* Center vertically */
 }
 
-/* Register container styling */
-#container-register {
-    background: rgba(95, 86, 86, 0.3);
+/* login container styling */
+#container-login {
+    background: rgba(95, 86, 86, 0.4);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(0.2px);
-    -webkit-backdrop-filter: blur(1.2px);
+    backdrop-filter: blur(1.8px);
+    -webkit-backdrop-filter: blur(2.2px);
     width: 80%; /* Make width relative to the viewport */
     max-width: 340px; /* Set a maximum width */
     height: auto; /* Adjust height based on content */
@@ -30,10 +30,15 @@ body {
     text-align: center;
 }
 
+/* Placeholder text styling */
+#container-login input::placeholder {
+    color: #a8a7a7; /* Change this color to your desired color */
+}
+
 /* Title styling */
 #title {
     position: relative;
-    background: rgba(19, 19, 19, 0.18);
+    background: rgba(19, 19, 19, 0.30);
     border-radius: 16px;
     padding: 20px 0px;
     font-size: 22px;
@@ -50,8 +55,8 @@ body {
     padding: 8px 0px;
     margin-top: 15px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(1.2px);
-    -webkit-backdrop-filter: blur(1.2px);
+    backdrop-filter: blur(1.8px);
+    -webkit-backdrop-filter: blur(1.8px);
 }
 
 .input-addon {
@@ -62,12 +67,12 @@ body {
 input[type=text],
 input[type=password],
 input[type=email] {
-    color: #949494;
-    background: rgba(44, 43, 43, 0.35);
+    color: #e7e7e7;
+    background: rgba(31, 31, 31, 0.35);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1.2px);
     margin: 0;
-    border: 1px solid rgba(40, 40, 40, 0.29);
+    border: 1px solid rgba(61, 61, 61, 0.29);
     padding: 6px 0px;
     border-radius: 3px;
 }
@@ -78,9 +83,9 @@ input[type=email]:focus {
     border: 1px solid #373b3d;
 }
 
-/* Register button styling */
+/* login button styling */
 input[type=submit] {
-    padding: 6px 25px;
+    padding: 10px 20%;
     background: #2b3138;
     color: #C1C3C6;
     font-weight: bold;
@@ -97,7 +102,7 @@ input[type=submit] {
 }
 
 @media (max-width: 768px) {
-    #container-register {
+    #container-login {
         width: 90%;
         max-width: 300px;
     }
@@ -106,6 +111,7 @@ input[type=submit] {
         max-width: 100%;
     }
 }
+
 /* Media query for screens 1024px and above */
 @media (min-width: 1024px) {
     body {
