@@ -1,6 +1,6 @@
 import dash
 from dash import html, dcc
-from dash_table import DataTable
+from dash.dash_table import DataTable
 import callbacks  # Import the callbacks module
 
 app = dash.Dash(__name__)
